@@ -15,7 +15,9 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("Caclulator"),
         centerTitle: true,
+        backgroundColor: Colors.grey[900],
       ),
+
     );
   }
 }
