@@ -198,7 +198,7 @@ class Home extends StatelessWidget {
                     RaisedButton(
                       onPressed: () {},
                       child: Text(
-                        "X",
+                        "x",
                         style: TextStyle(
                           color: Colors.red,
                           letterSpacing: 2,
