@@ -14,7 +14,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  // Dynamic data -> variables
   String formulaText = '';
+  String answer = '0';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +92,7 @@ class _HomeState extends State<Home> {
           Container(
             // alignment: ,
             child: Text(
-              "600",
+              "$answer",
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 2,
@@ -113,9 +115,10 @@ class _HomeState extends State<Home> {
                   children: [
                     RaisedButton(
                       onPressed: () {
-                        // Clear the Formula Text
+                        // Clear the Formula Text & Answer Text
                         setState(() {
                           formulaText = "";
+                          answer = "";
                         });
                       },
                       child: Text(
@@ -131,7 +134,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += "+";
+                          formulaText += " + ";
                         });
                       },
                       child: Text(
@@ -147,7 +150,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += "%";
+                          formulaText += " % ";
                         });
                       },
                       child: Text(
@@ -163,7 +166,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += "/";
+                          formulaText += " / ";
                         });
                       },
                       child: Text(
@@ -233,7 +236,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += "x";
+                          formulaText += " x ";
                         });
                       },
                       child: Text(
@@ -303,7 +306,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += "-";
+                          formulaText += " - ";
                         });
                       },
                       child: Text(
@@ -373,7 +376,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += "+";
+                          formulaText += " + ";
                         });
                       },
                       child: Text(
@@ -395,7 +398,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += "!";
+                          formulaText += " ! ";
                         });
                       },
                       child: Text(
@@ -444,7 +447,20 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         // Perform Calculations
                         setState(() {
-                          formulaText += "=";
+                          // Get the expression from the formula text
+                          String query = formulaText;
+
+                          // String Splitting -> Returns a List object
+                          List query_split = query.split(" ");
+                          // Display the contents of the expresion
+                          for (int i = 0; i < query_split.length; i++) {
+                            // answer += query_split[i].toString();
+                            answer += "$i";
+                          }
+                          // String > int
+                          // int one = int.parse('1');
+                          // int > String
+                          // String oneString = 1.toString();
                         });
                       },
                       child: Text(
