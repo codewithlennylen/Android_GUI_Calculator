@@ -452,10 +452,40 @@ class _HomeState extends State<Home> {
 
                           // String Splitting -> Returns a List object
                           List query_split = query.split(" ");
+                          // Keep a list of operations allowed in the calc.
+                          List<String> operations = ['+', '-', 'x', '/'];
                           // Display the contents of the expresion
+                          int currentSum = 0;
+                          String currentOperation;
                           for (int i = 0; i < query_split.length; i++) {
-                            // answer += query_split[i].toString();
-                            answer += "$i";
+                            for (int j = 0; j < operations.length; j++) {
+                              // Check whether the current component is an operation
+                              if (operations[j] == query_split[i]) {
+                                //  Check the opertation-type and do the respective  calculation
+                                if (operations[j] == '+') {
+                                  currentOperation = query_split[i];
+                                } else if (operations[j] == '-') {
+                                  currentOperation = query_split[i];
+                                } else if (operations[j] == 'x') {
+                                  currentOperation = query_split[i];
+                                } else if (operations[j] == '/') {
+                                  // Division only works for double types
+                                  currentOperation = query_split[i];
+                                }
+                              }
+                            }
+                            // If a number, calculate it - based on the operation
+                            if (currentOperation == '+') {
+                              currentSum += int.parse(query_split[i]);
+                            } else if (currentOperation == '-') {
+                              currentSum -= int.parse(query_split[i]);
+                            } else if (currentOperation == 'x') {
+                              currentSum *= int.parse(query_split[i]);
+                            } else if (currentOperation == '/') {
+                              currentSum *= int.parse(query_split[i]);
+                            }
+
+                            answer = "$currentSum";
                           }
                           // String > int
                           // int one = int.parse('1');
