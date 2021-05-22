@@ -8,7 +8,13 @@ void main(List<String> args) {
   );
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  String formulaText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +79,7 @@ class Home extends StatelessWidget {
           Container(
             // alignment: ,
             child: Text(
-              "20 x 30",
+              "$formulaText",
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 2,
@@ -106,7 +112,12 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Clear the Formula Text
+                        setState(() {
+                          formulaText = "";
+                        });
+                      },
                       child: Text(
                         "AC",
                         style: TextStyle(
@@ -118,7 +129,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "+";
+                        });
+                      },
                       child: Text(
                         "+",
                         style: TextStyle(
@@ -130,7 +145,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "%";
+                        });
+                      },
                       child: Text(
                         "%",
                         style: TextStyle(
@@ -142,7 +161,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "/";
+                        });
+                      },
                       child: Text(
                         "/",
                         style: TextStyle(
@@ -160,7 +183,11 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "7";
+                        });
+                      },
                       child: Text(
                         "7",
                         style: TextStyle(
@@ -172,7 +199,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "8";
+                        });
+                      },
                       child: Text(
                         "8",
                         style: TextStyle(
@@ -184,7 +215,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "9";
+                        });
+                      },
                       child: Text(
                         "9",
                         style: TextStyle(
@@ -196,7 +231,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "x";
+                        });
+                      },
                       child: Text(
                         "x",
                         style: TextStyle(
@@ -214,7 +253,11 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "4";
+                        });
+                      },
                       child: Text(
                         "4",
                         style: TextStyle(
@@ -226,7 +269,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "5";
+                        });
+                      },
                       child: Text(
                         "5",
                         style: TextStyle(
@@ -238,7 +285,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "6";
+                        });
+                      },
                       child: Text(
                         "6",
                         style: TextStyle(
@@ -250,7 +301,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "-";
+                        });
+                      },
                       child: Text(
                         "-",
                         style: TextStyle(
@@ -268,7 +323,11 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "1";
+                        });
+                      },
                       child: Text(
                         "1",
                         style: TextStyle(
@@ -280,7 +339,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "2";
+                        });
+                      },
                       child: Text(
                         "2",
                         style: TextStyle(
@@ -292,7 +355,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "3";
+                        });
+                      },
                       child: Text(
                         "3",
                         style: TextStyle(
@@ -304,7 +371,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "+";
+                        });
+                      },
                       child: Text(
                         "+",
                         style: TextStyle(
@@ -322,7 +393,11 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "!";
+                        });
+                      },
                       child: Text(
                         "!",
                         style: TextStyle(
@@ -334,7 +409,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += "0";
+                        });
+                      },
                       child: Text(
                         "0",
                         style: TextStyle(
@@ -346,7 +425,11 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          formulaText += ".";
+                        });
+                      },
                       child: Text(
                         ".",
                         style: TextStyle(
@@ -358,7 +441,12 @@ class Home extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Perform Calculations
+                        setState(() {
+                          formulaText += "=";
+                        });
+                      },
                       child: Text(
                         "=",
                         style: TextStyle(
