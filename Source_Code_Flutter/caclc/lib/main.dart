@@ -17,6 +17,7 @@ class _HomeState extends State<Home> {
   // Dynamic data -> variables
   String formulaText = '';
   String answer = '0';
+  double currentSum = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,6 +112,7 @@ class _HomeState extends State<Home> {
               children: [
                 // First Row
                 Row(
+                  // I want the AC btn to span 2 columns
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RaisedButton(
@@ -119,6 +121,7 @@ class _HomeState extends State<Home> {
                         setState(() {
                           formulaText = "";
                           answer = "";
+                          currentSum = 0;
                         });
                       },
                       child: Text(
@@ -150,11 +153,11 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          formulaText += " % ";
+                          formulaText = "Ans";
                         });
                       },
                       child: Text(
-                        "%",
+                        "Ans",
                         style: TextStyle(
                           color: Colors.blueAccent[400],
                           letterSpacing: 2,
@@ -451,47 +454,60 @@ class _HomeState extends State<Home> {
                           String query = formulaText;
 
                           // String Splitting -> Returns a List object
-                          List query_split = query.split(" ");
-                          // Keep a list of operations allowed in the calc.
-                          List<String> operations = ['+', '-', 'x', '/'];
-                          // Display the contents of the expresion
-                          int currentSum = 0;
-                          String currentOperation;
-                          for (int i = 0; i < query_split.length; i++) {
-                            for (int j = 0; j < operations.length; j++) {
-                              // Check whether the current component is an operation
-                              if (operations[j] == query_split[i]) {
-                                //  Check the opertation-type and do the respective  calculation
-                                if (operations[j] == '+') {
-                                  currentOperation = query_split[i];
-                                } else if (operations[j] == '-') {
-                                  currentOperation = query_split[i];
-                                } else if (operations[j] == 'x') {
-                                  currentOperation = query_split[i];
-                                } else if (operations[j] == '/') {
-                                  // Division only works for double types
-                                  currentOperation = query_split[i];
+                          List<String> querySplit = query.split(" ");
+                          // Convert  the List to a Map to access the index
+                          final queryMap = querySplit.asMap();
+
+                          //* Calculation Implementation 2.0
+                          // "22 + 5 - 30" .split()
+                          // even indexes -> Numbers
+                          // odd indexes -> Operators
+
+                          // Track the sum and operations on the expression
+                          // double currentSum = 0;
+                          String currentOperation = "";
+                          for (int index = 0;
+                              index <= querySplit.length;
+                              index++) {
+                            // Check for even indexes
+                            if (index % 2 == 0) {
+                              // No operation is performed on the first value
+                              if (index == 0) {
+                                // Check for user wanting to continue with the expression
+                                if (queryMap[index] == 'Ans') {
+                                  currentSum = currentSum;
+                                  // Do nothing
+                                  // continue;
+                                } else {
+                                  currentSum = double.parse(queryMap[index]);
                                 }
                               }
+                              if (currentOperation.isNotEmpty) {
+                                if (currentOperation == '+') {
+                                  currentSum += double.parse(queryMap[index]);
+                                } else if (currentOperation == '-') {
+                                  currentSum -= double.parse(queryMap[index]);
+                                } else if (currentOperation == 'x') {
+                                  currentSum *= double.parse(queryMap[index]);
+                                } else if (currentOperation == '/') {
+                                  currentSum /= double.parse(queryMap[index]);
+                                } else if (currentOperation == 'Ans') {
+                                  // formulaText = "";
+                                  formulaText = answer.toString();
+                                }
+                              }
+                            } else {
+                              // if the index is odd, then we are dealing with an operation
+                              currentOperation = queryMap[index];
                             }
-                            // If a number, calculate it - based on the operation
-                            if (currentOperation == '+') {
-                              currentSum += int.parse(query_split[i]);
-                            } else if (currentOperation == '-') {
-                              currentSum -= int.parse(query_split[i]);
-                            } else if (currentOperation == 'x') {
-                              currentSum *= int.parse(query_split[i]);
-                            } else if (currentOperation == '/') {
-                              currentSum *= int.parse(query_split[i]);
-                            }
-
-                            answer = "$currentSum";
                           }
-                          // String > int
-                          // int one = int.parse('1');
-                          // int > String
-                          // String oneString = 1.toString();
-                        });
+                          answer = "$currentSum";
+                        }
+                            // String > int
+                            // int one = int.parse('1');
+                            // int > String
+                            // String oneString = 1.toString();
+                            );
                       },
                       child: Text(
                         "=",
