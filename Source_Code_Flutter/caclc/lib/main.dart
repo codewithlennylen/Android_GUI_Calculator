@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
           Row(
             children: [
               SizedBox(
-                height: 210,
+                height: 346, //! Manual Sizing - Use Media Query Instead.
               )
             ],
           ),
