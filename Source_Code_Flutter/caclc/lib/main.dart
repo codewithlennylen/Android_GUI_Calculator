@@ -31,40 +31,24 @@ class _HomeState extends State<Home> {
         children: [
           // Theme Select
           Container(
-            color: Colors.grey[700],
+            color: Colors.grey[900],
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 RaisedButton.icon(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.donut_large,
-                  ),
-                  label: Text(
-                    "D",
-                    style: TextStyle(color: Colors.grey[300]),
-                  ),
-                  color: Colors.red,
-                ),
-
-                RaisedButton.icon(
-                  onPressed: null,
+                  onPressed: () {
+                    null;
+                  },
                   icon: Icon(
                     Icons.lightbulb_outline,
                   ),
                   label: Text(
-                    "L",
-                    style: TextStyle(color: Colors.grey[600]),
+                    "Light",
+                    style: TextStyle(color: Colors.white),
                   ),
-                  color: Colors.red,
+                  color: Colors
+                      .grey[700], // Must set onPressed for button to work.
                 ),
-                // FlatButton(
-                //   onPressed: null,
-                //   child: Text(
-                //     "L",
-                //     style: TextStyle(color: Colors.white),
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -118,9 +102,10 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       onPressed: () {
                         // Clear the Formula Text & Answer Text
+                        // Reset the Calculations as well
                         setState(() {
                           formulaText = "";
-                          answer = "";
+                          answer = "0";
                           currentSum = 0;
                         });
                       },
